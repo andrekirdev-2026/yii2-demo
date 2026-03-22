@@ -8,7 +8,9 @@
 #basic/web/index.php
 actor: FunctionalTester
 modules:
-    enabled:
-      - Filesystem
-      - Yii2
-      - Asserts
+  enabled:
+    - Yii2:
+        configFile: 'config/test.php'
+    - REST:
+        depends: Yii2
+        part: json

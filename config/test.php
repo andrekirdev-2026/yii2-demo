@@ -15,7 +15,13 @@ return [
     ],
     'language' => 'en-US',
     'components' => [
-        'db' => $db,
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=yii2_test',
+            'username' => 'yii2',
+            'password' => 'yii2',
+            'charset' => 'utf8',
+        ],
         'mailer' => [
             'class' => \yii\symfonymailer\Mailer::class,
             'viewPath' => '@app/mail',
@@ -27,7 +33,15 @@ return [
             'basePath' => __DIR__ . '/../web/assets',
         ],
         'urlManager' => [
-            'showScriptName' => true,
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'album',
+                    'pluralize' => true,
+                ],
+            ],
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -41,6 +55,10 @@ return [
                 'domain' => 'localhost',
             ],
             */
+        ],
+        'response' => [
+            'format' => yii\web\Response::FORMAT_JSON,
+            'charset' => 'UTF-8',
         ],
     ],
     'params' => $params,
