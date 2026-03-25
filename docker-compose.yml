@@ -1,7 +1,7 @@
 services:
   app:
     build: ./docker/php
-    container_name: yii2_app
+    container_name: yii2_app_test2
     volumes:
       - ./:/var/www/html
     working_dir: /var/www/html
@@ -13,11 +13,11 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: yii2_db
+    container_name: yii2_db_test2
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: yii2_test
+      MYSQL_DATABASE: yii2_test_test
       MYSQL_USER: yii2
       MYSQL_PASSWORD: yii2
     ports:
@@ -27,7 +27,7 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: yii2_nginx
+    container_name: yii2_nginx_test2
     ports:
       - "8080:80"
     volumes:
